@@ -1,3 +1,32 @@
-body {
+body{ 
 
+}
+
+h1{
+  font-size: 300%;
+  letter-spacing: 3px;
+  color: #b5179e;
+  text-decoration: underline;
+  
+  
+}
+
+ul{
+  text-align: center;
+  list-style-type: none;
+  font-family: "Times"
+  
+}
+
+li{ 
+  float: right;
+
+}
+
+li a{
+  padding: 30px;
+  border: ridge;
+  
+  
+  
 }
