@@ -2,16 +2,30 @@ img{
   width: 25%;
    height: auto;
 }
+
+p{
+  
+  color: #52796f
+}
+
+body{
+  background-color: #ffe5ec
+  
+  
+}
+
 h1{
   font-size: 250%;
   color: #814D36;
-  font-family: Georgia;
+  font-family: Papyrus;
+  text-decoration: underline;
   
 }
 
 h2{
-  font-size: 150%;
+  font-size: 180%;
   color: #814D36;
-  font-family: Georgia;
+  font-family: Papyrus;
+  text-decoration: underline;
   
 }
