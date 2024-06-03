@@ -1,5 +1,22 @@
 body{ 
+  background-color: #ffe5ec
+  
 }
+
+p{
+  font-family: Garamond;
+  font-size: 30px;
+ color: #a53860;
+  
+  
+}
+img{
+  width: 55%;
+  height: auto;
+  
+  
+}
+
 
 h1{
   font-size: 300%;
@@ -29,4 +46,3 @@ li a{
   
   
 }
-
