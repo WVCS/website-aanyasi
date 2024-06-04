@@ -1,6 +1,11 @@
 img{
+ 
   width: 25%;
    height: auto;
+ border: dotted 5px;
+}
+img:hover {
+  border: dashed 8px #3B3355;
 }
 
 p{
@@ -18,7 +23,14 @@ h1{
   font-size: 250%;
   color: #814D36;
   font-family: Papyrus;
-  text-decoration: underline;
+  text-decoration: none;
+  
+}
+
+h1:hover {
+   color: #5e548e;
+  font-size: 260%;
+
   
 }
 
@@ -26,6 +38,11 @@ h2{
   font-size: 180%;
   color: #814D36;
   font-family: Papyrus;
-  text-decoration: underline;
+  text-decoration: none;
   
 }
+h2:hover {
+      color: #5e548e;
+  font-size: 190%;
+
+  
