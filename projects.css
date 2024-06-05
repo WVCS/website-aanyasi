@@ -10,3 +10,18 @@ body{
   
   
 }
+
+a:link, a:visited {
+  background-color: #ff8fab;
+  color: white;
+  padding: 14px 25px;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #fb6f92;
+}
+  
