@@ -11,17 +11,19 @@ body{
   
 }
 
-a:link, a:visited {
-  background-color: #ff8fab;
-  color: white;
-  padding: 14px 25px;
-  float: right;
-  text-align: center;
+li {
+
+  background-color: #fb6f92;
+  display: inline;
+  padding: 20px;
+  
+}
+li:hover {
+  background-color: #ef476f; 
+  padding: 25px;
+}
+a {
   text-decoration: none;
-  display: inline-block;
+  color: #ffc8dd;
 }
 
-a:hover, a:active {
-  background-color: #fb6f92;
-}
-  
