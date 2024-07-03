@@ -66,3 +66,23 @@ img{
   height: auto;
 }
   
+nav {
+  list-style-type: none;
+position: fixed;
+background-color: #606C38;
+  top: 0;
+  width: 100%;
+  left: 2;
+}
+li {
+  display: inline;
+  padding: 10px;
+  
+}
+li:hover {
+  background-color: black; 
+}
+a {
+  text-decoration: none;
+  color: white;
+}
