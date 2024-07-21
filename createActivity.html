@@ -1,15 +1,15 @@
 <html>
   <head> <link rel = "stylesheet" href= "createActivity.css"> </head>
-  <title>
+   <title>
     Create an Activity
     
   </title>
-
-<nav> 
+  
+  <nav> 
     <li> <a href= "index.html"> Home </li>
       <li> <a href= "createActivity.html"> Create Activity </li>
   
-    <li><a href="vActivities.html"> View Activities </a></li>
+    <li><a href=""> View Activities </a></li>
   </nav>
   
   <h1> Create an Activity </h1>
@@ -23,23 +23,88 @@
       <form action="/action_page.php">
   <label for="nActivity">Name of Activity:</label>
   <input type="text" id="nActivity" name="nActivity"><br><br>
-  <label for="1date">When is it? :*add calendar dropdown or different options maybe</label>
+  <label for="1date">When is it? </label>
   <input type="date" id="1date" name="1date"><br><br>
-        <label for= "Ireccuring"> Is this a recurring event? (ex. weekly, monthly, yearly, etc)</label>
-        <input type = "text" id = "Irecurring" name = "Irecurring"><br><br>
-        <label for = "wLocation" > Where is it? Enter a location</label>
+        <label for= "Ireccuring"> Is this a recurring event? </label>
+        <select name = "Ireccuring" id = "Ireccuring">
+          <option value = "no">no</option>
+          <option value = "weekly">yes, weekly</option>
+          <option value = "monthly">yes, monthly</option>
+          <option value = "yearly">yes, yearly</option>
+        </select>
+        
+        <br><br>
+        <label for = "wLocation" > Where is it? Enter an address</label>
         <input type= "text" id = "wLocation" name = "wLocation"><br><br>
-        
-        <label for = "2Location" > What city is this in?</label>
-        <input type= "text" id = "2Location" name = "2Location"><br><br>
-        
         <label for = "wProcess" > What is the process to participate?</label>
-        <input type= "text" id = "wProcess" name = "wProcess"><br><br>
+        <input type= "text" id = "wProcess" name = "wProcess" ><br><br> 
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="imageUpload">Upload an image:</label>
+    <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+ 
+  <br> <br>
+        
+       <label for="states">What state is this in? Select a state</label>
+  <select id="states" name="states">
+    <option value="AL">Alabama</option>
+    <option value="AK">Alaska</option>
+    <option value="AZ">Arizona</option>
+    <option value="AR">Arkansas</option>
+    <option value="CA">California</option>
+    <option value="CO">Colorado</option>
+    <option value="CT">Connecticut</option>
+    <option value="DE">Delaware</option>
+    <option value="FL">Florida</option>
+    <option value="GA">Georgia</option>
+    <option value="HI">Hawaii</option>
+    <option value="ID">Idaho</option>
+    <option value="IL">Illinois</option>
+    <option value="IN">Indiana</option>
+    <option value="IA">Iowa</option>
+    <option value="KS">Kansas</option>
+    <option value="KY">Kentucky</option>
+    <option value="LA">Louisiana</option>
+    <option value="ME">Maine</option>
+    <option value="MD">Maryland</option>
+    <option value="MA">Massachusetts</option>
+    <option value="MI">Michigan</option>
+    <option value="MN">Minnesota</option>
+    <option value="MS">Mississippi</option>
+    <option value="MO">Missouri</option>
+    <option value="MT">Montana</option>
+    <option value="NE">Nebraska</option>
+    <option value="NV">Nevada</option>
+    <option value="NH">New Hampshire</option>
+    <option value="NJ">New Jersey</option>
+    <option value="NM">New Mexico</option>
+    <option value="NY">New York</option>
+    <option value="NC">North Carolina</option>
+    <option value="ND">North Dakota</option>
+    <option value="OH">Ohio</option>
+    <option value="OK">Oklahoma</option>
+    <option value="OR">Oregon</option>
+    <option value="PA">Pennsylvania</option>
+    <option value="RI">Rhode Island</option>
+    <option value="SC">South Carolina</option>
+    <option value="SD">South Dakota</option>
+    <option value="TN">Tennessee</option>
+    <option value="TX">Texas</option>
+    <option value="UT">Utah</option>
+    <option value="VT">Vermont</option>
+    <option value="VA">Virginia</option>
+    <option value="WA">Washington</option>
+    <option value="WV">West Virginia</option>
+    <option value="WI">Wisconsin</option>
+    <option value="WY">Wyoming</option>
+  </select><br><br>
+        
+       
         
         
         
         
-  <input type="submit" value="Submit">
+  <input type="submit"value="Next">
 </form>
     
     </center>
