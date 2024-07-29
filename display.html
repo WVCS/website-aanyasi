@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Information</title>
+</head>
+<body>
+    <h1>Submitted Information</h1>
+    <p id="info"></p>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split('&').forEach(pair => {
+                const [key, value] = pair.split('=');
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Get the query parameters
+        const params = getQueryParams();
+
+        // Display the information
+        document.getElementById('info').innerText = `Name: ${params.name}, Age: ${params.age}`;
+    </script>
+</body>
+</html>
