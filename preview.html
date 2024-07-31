@@ -6,7 +6,7 @@
     <title>Display Information</title>
 </head>
 <body>
-    <h1>Submitted Information</h1>
+    <h1>Preview</h1>
     <p id="info"></p>
 
     <script>
@@ -24,7 +24,12 @@
         const params = getQueryParams();
 
         // Display the information
-        document.getElementById('info').innerText = `Name: ${params.name}, Age: ${params.age}`;
+        document.getElementById('info').innerText = `Name of Activity: ${params.nActivity}, This Activity is on: ${params.1date}
+        , Is this a reccuring event? ${params.Ireccuring}
+        , The Address for this Activity is: ${params.wLocation}
+        , Process to Participate: ${params.wProcess}
+        , Photo: ${params.imageUpload}
+        , State: ${params.states}`;
     </script>
 </body>
 </html>
