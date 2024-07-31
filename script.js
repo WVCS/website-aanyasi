@@ -12,7 +12,7 @@ document.getElementById('activityInputs').addEventListener('submit', function(ev
 
 
     // Redirect to a new page with the values as query parameters
-    window.location.href = `display.html?nActivity=${encodeURIComponent(nActivity)}
+    window.location.href = `preview.html?nActivity=${encodeURIComponent(nActivity)}
     &1date=${encodeURIComponent(1date)}&Ireccuring=${encodeURIComponent(Irecurring)}
     &wLocation=${encodeURIComponent(wLocation)}
     &wProcess=${encodeURIComponent(wProcess)}
