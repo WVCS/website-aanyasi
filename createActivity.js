@@ -1,4 +1,4 @@
-document.getElementById('userForm').addEventListener('submit', function(event) {
+document.getElementById('activityInputs').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form from submitting the traditional way
 
     // Get the values from the form
