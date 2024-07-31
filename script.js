@@ -12,5 +12,10 @@ document.getElementById('activityInputs').addEventListener('submit', function(ev
 
 
     // Redirect to a new page with the values as query parameters
-    window.location.href = `display.html?name=${encodeURIComponent(name)}&age=${encodeURIComponent(age)}`;
+    window.location.href = `display.html?nActivity=${encodeURIComponent(nActivity)}
+    &1date=${encodeURIComponent(1date)}&Ireccuring=${encodeURIComponent(Irecurring)}
+    &wLocation=${encodeURIComponent(wLocation)}
+    &wProcess=${encodeURIComponent(wProcess)}
+    &imageUpload=${encodeURIComponent(imageUpload)}
+    &states=${encodeURIComponent(states)}`;
 });
