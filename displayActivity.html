@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Activity</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createActivity.html">Create Activity</a></li>
+            <li><a href="#">View Activities</a></li>
+        </ul>
+    </nav>
+
+    <h1>Activity Details</h1>
+
+    <center>
+        <div id="activityDetails"></div>
+    </center>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split('&').forEach(pair => {
+                const [key, value] = pair.split('=');
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Get the query parameters
+        const params = getQueryParams();
+
+        // Display the activity details
+        document.getElementById('activityDetails').innerHTML = `
+            <p><strong>Name of Activity:</strong> ${params.nActivity}</p>
+            <p><strong>Date:</strong> ${params.date}</p>
+            <p><strong>Recurring:</strong> ${params.recurring}</p>
+            <p><strong>Location:</strong> ${params.location}</p>
+            <p><strong>Process to Participate:</strong> ${params.process}</p>
+            <p><strong>State:</strong> ${params.state}</p>
+        `;
+    </script>
+</body>
+</html>
