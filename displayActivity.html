@@ -10,7 +10,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="createActivity.html">Create Activity</a></li>
-            <li><a href="#">View Activities</a></li>
+            <li><a href="viewActivities.html">View Activities</a></li>
         </ul>
     </nav>
 
@@ -18,6 +18,7 @@
 
     <center>
         <div id="activityDetails"></div>
+        <button id="postButton">Post</button>
     </center>
 
     <script>
@@ -47,6 +48,29 @@
             <p><strong>State:</strong> ${params.state}</p>
             ${imageDataURL ? `<p><strong>Image:</strong><br><img src="${imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
         `;
+
+        // Handle the post button click
+        document.getElementById('postButton').addEventListener('click', function() {
+            // Get existing posts from localStorage
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+            // Add the new post to the array
+            posts.push({
+                nActivity: params.nActivity,
+                date: params.date,
+                recurring: params.recurring,
+                location: params.location,
+                process: params.process,
+                state: params.state,
+                imageDataURL: imageDataURL
+            });
+
+            // Save the updated posts array back to localStorage
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            // Redirect to the view activities page
+            window.location.href = 'viewActivities.html';
+        });
     </script>
 </body>
 </html>
