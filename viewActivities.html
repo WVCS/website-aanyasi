@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Activities</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createActivity.html">Create Activity</a></li>
+            <li><a href="viewActivities.html">View Activities</a></li>
+        </ul>
+    </nav>
+
+    <h1>All Activities</h1>
+
+    <center>
+        <div id="activitiesList"></div>
+    </center>
+
+    <script>
+        // Get the posts from localStorage
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+        // Display the posts
+        const activitiesList = document.getElementById('activitiesList');
+        posts.forEach(post => {
+            const postElement = document.createElement('div');
+            postElement.innerHTML = `
+                <p><strong>Name of Activity:</strong> ${post.nActivity}</p>
+                <p><strong>Date:</strong> ${post.date}</p>
+                <p><strong>Recurring:</strong> ${post.recurring}</p>
+                <p><strong>Location:</strong> ${post.location}</p>
+                <p><strong>Process to Participate:</strong> ${post.process}</p>
+                <p><strong>State:</strong> ${post.state}</p>
+                ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+                <hr>
+            `;
+            activitiesList.appendChild(postElement);
+        });
+    </script>
+</body>
+</html>
