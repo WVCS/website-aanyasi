@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Activity</title>
 </head>
-   
 <body>
-         <link rel = "stylesheet" href= "createActivity.css"> 
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -16,7 +14,7 @@
         </ul>
     </nav>
 
-    <h1> Preview</h1>
+    <h1>Activity Details</h1>
 
     <center>
         <div id="activityDetails"></div>
@@ -36,6 +34,9 @@
         // Get the query parameters
         const params = getQueryParams();
 
+        // Get the image data URL from localStorage
+        const imageDataURL = localStorage.getItem('imageDataURL');
+
         // Display the activity details
         document.getElementById('activityDetails').innerHTML = `
             <p><strong>Name of Activity:</strong> ${params.nActivity}</p>
@@ -44,6 +45,7 @@
             <p><strong>Location:</strong> ${params.location}</p>
             <p><strong>Process to Participate:</strong> ${params.process}</p>
             <p><strong>State:</strong> ${params.state}</p>
+            ${imageDataURL ? `<p><strong>Image:</strong><br><img src="${imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
         `;
     </script>
 </body>
