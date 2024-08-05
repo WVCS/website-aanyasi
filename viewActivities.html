@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>View Activities</title>
+    <style>
+        .small-image {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -34,7 +40,7 @@
                     <p><strong>Location:</strong> ${post.wLocation}</p>
                     <p><strong>Process to Participate:</strong> ${post.wProcess}</p>
                     <p><strong>State:</strong> ${post.states}</p>
-                    ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+                    ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" class="small-image"></p>` : ''}
                     <hr>
                 `;
                 activitiesList.appendChild(postElement);
