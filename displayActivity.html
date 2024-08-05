@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Display Activity</title>
+    <style>
+        .small-image {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -33,7 +39,7 @@
                 <p><strong>Location:</strong> ${activity.wLocation}</p>
                 <p><strong>Process to Participate:</strong> ${activity.wProcess}</p>
                 <p><strong>State:</strong> ${activity.states}</p>
-                ${activity.imageDataURL ? `<p><strong>Image:</strong><br><img src="${activity.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+                ${activity.imageDataURL ? `<p><strong>Image:</strong><br><img src="${activity.imageDataURL}" alt="Activity Image" class="small-image"></p>` : ''}
             `;
 
             document.getElementById('postActivityButton').addEventListener('click', function() {
