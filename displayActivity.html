@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Activity</title>
 </head>
 <body>
@@ -14,62 +13,35 @@
         </ul>
     </nav>
 
-    <h1>Activity Details</h1>
-
     <center>
+        <h1>Review Your Activity</h1>
         <div id="activityDetails"></div>
-        <button id="postButton">Post</button>
+        <button id="postActivityButton">Post Activity</button>
     </center>
 
     <script>
-        // Function to get query parameters
-        function getQueryParams() {
-            const params = {};
-            window.location.search.substring(1).split('&').forEach(pair => {
-                const [key, value] = pair.split('=');
-                params[decodeURIComponent(key)] = decodeURIComponent(value);
+        document.addEventListener('DOMContentLoaded', function() {
+            const activity = JSON.parse(localStorage.getItem('currentActivity'));
+
+            const activityDetails = document.getElementById('activityDetails');
+            activityDetails.innerHTML = `
+                <p><strong>Your Name:</strong> ${activity.userName}</p>
+                <p><strong>Your Email:</strong> ${activity.userEmail}</p>
+                <p><strong>Name of Activity:</strong> ${activity.nActivity}</p>
+                <p><strong>Date:</strong> ${activity['1date']}</p>
+                <p><strong>Recurring:</strong> ${activity.Ireccuring}</p>
+                <p><strong>Location:</strong> ${activity.wLocation}</p>
+                <p><strong>Process to Participate:</strong> ${activity.wProcess}</p>
+                <p><strong>State:</strong> ${activity.states}</p>
+                ${activity.imageDataURL ? `<p><strong>Image:</strong><br><img src="${activity.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+            `;
+
+            document.getElementById('postActivityButton').addEventListener('click', function() {
+                const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.push(activity);
+                localStorage.setItem('posts', JSON.stringify(posts));
+                window.location.href = 'viewActivities.html';
             });
-            return params;
-        }
-
-        // Get the query parameters
-        const params = getQueryParams();
-
-        // Get the image data URL from localStorage
-        const imageDataURL = localStorage.getItem('imageDataURL');
-
-        // Display the activity details
-        document.getElementById('activityDetails').innerHTML = `
-            <p><strong>Name of Activity:</strong> ${params.nActivity}</p>
-            <p><strong>Date:</strong> ${params.date}</p>
-            <p><strong>Recurring:</strong> ${params.recurring}</p>
-            <p><strong>Location:</strong> ${params.location}</p>
-            <p><strong>Process to Participate:</strong> ${params.process}</p>
-            <p><strong>State:</strong> ${params.state}</p>
-            ${imageDataURL ? `<p><strong>Image:</strong><br><img src="${imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
-        `;
-
-        // Handle the post button click
-        document.getElementById('postButton').addEventListener('click', function() {
-            // Get existing posts from localStorage
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-
-            // Add the new post to the array
-            posts.push({
-                nActivity: params.nActivity,
-                date: params.date,
-                recurring: params.recurring,
-                location: params.location,
-                process: params.process,
-                state: params.state,
-                imageDataURL: imageDataURL
-            });
-
-            // Save the updated posts array back to localStorage
-            localStorage.setItem('posts', JSON.stringify(posts));
-
-            // Redirect to the view activities page
-            window.location.href = 'viewActivities.html';
         });
     </script>
 </body>
