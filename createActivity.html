@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Activity</title>
 </head>
 <body>
@@ -14,13 +13,18 @@
         </ul>
     </nav>
 
-    <h1>Create an Activity</h1>
-
     <center>
+        <h1>Create an Activity</h1>
         <p>Here, you can share an activity to be posted for others to see</p>
         <br><br>
 
-        <form id="activityForm">
+        <form id="activityForm" enctype="multipart/form-data">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" name="userName" required><br><br>
+
+            <label for="userEmail">Your Email:</label>
+            <input type="email" id="userEmail" name="userEmail" required><br><br>
+
             <label for="nActivity">Name of Activity:</label>
             <input type="text" id="nActivity" name="nActivity" required><br><br>
 
@@ -33,8 +37,7 @@
                 <option value="weekly">Yes, weekly</option>
                 <option value="monthly">Yes, monthly</option>
                 <option value="yearly">Yes, yearly</option>
-            </select>
-            <br><br>
+            </select><br><br>
 
             <label for="wLocation">Where is it? Enter an address</label>
             <input type="text" id="wLocation" name="wLocation" required><br><br>
@@ -43,54 +46,52 @@
             <input type="text" id="wProcess" name="wProcess" required><br><br>
 
             <label for="imageUpload">Upload an image:</label>
-            <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
-            <br><br>
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*"><br><br>
 
             <label for="states">What state is this in? Select a state</label>
-            <select id="states" name="states">
+            <select id="states" name="states" required>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <!-- Add other states here -->
                 <option value="WY">Wyoming</option>
             </select><br><br>
 
-            <button type="submit">Next</button>
+            <input type="button" value="Next" onclick="submitForm()">
         </form>
     </center>
 
     <script>
-        document.getElementById('activityForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        function submitForm() {
+            const form = document.getElementById('activityForm');
+            const formData = new FormData(form);
 
-            // Get the form values
-            const nActivity = document.getElementById('nActivity').value;
-            const date = document.getElementById('1date').value;
-            const recurring = document.getElementById('Ireccuring').value;
-            const location = document.getElementById('wLocation').value;
-            const process = document.getElementById('wProcess').value;
-            const state = document.getElementById('states').value;
+            const reader = new FileReader();
+            const file = formData.get('imageUpload');
+            
+            reader.onload = function(event) {
+                formData.append('imageDataURL', event.target.result);
 
-            // Get the image file
-            const imageFile = document.getElementById('imageUpload').files[0];
-            if (imageFile) {
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    // Save the data URL of the image to localStorage
-                    localStorage.setItem('imageDataURL', reader.result);
+                const activityData = {};
+                formData.forEach((value, key) => {
+                    activityData[key] = value;
+                });
 
-                    // Create a query string with the form values
-                    const queryString = `displayActivity.html?nActivity=${encodeURIComponent(nActivity)}&date=${encodeURIComponent(date)}&recurring=${encodeURIComponent(recurring)}&location=${encodeURIComponent(location)}&process=${encodeURIComponent(process)}&state=${encodeURIComponent(state)}`;
+                localStorage.setItem('currentActivity', JSON.stringify(activityData));
+                window.location.href = 'displayActivity.html';
+            };
 
-                    // Redirect to the display page with the query string
-                    window.location.href = queryString;
-                };
-                reader.readAsDataURL(imageFile);
+            if (file) {
+                reader.readAsDataURL(file);
             } else {
-                // If no image is uploaded, just redirect
-                const queryString = `displayActivity.html?nActivity=${encodeURIComponent(nActivity)}&date=${encodeURIComponent(date)}&recurring=${encodeURIComponent(recurring)}&location=${encodeURIComponent(location)}&process=${encodeURIComponent(process)}&state=${encodeURIComponent(state)}`;
-                window.location.href = queryString;
+                const activityData = {};
+                formData.forEach((value, key) => {
+                    activityData[key] = value;
+                });
+
+                localStorage.setItem('currentActivity', JSON.stringify(activityData));
+                window.location.href = 'displayActivity.html';
             }
-        });
+        }
     </script>
 </body>
 </html>
