@@ -8,6 +8,11 @@
             max-width: 150px;
             max-height: 150px;
         }
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -31,6 +36,7 @@
 
             posts.forEach(post => {
                 const postElement = document.createElement('div');
+                postElement.className = 'post';
                 postElement.innerHTML = `
                     <p><strong>Your Name:</strong> ${post.userName}</p>
                     <p><strong>Your Email:</strong> ${post.userEmail}</p>
@@ -41,7 +47,6 @@
                     <p><strong>Process to Participate:</strong> ${post.wProcess}</p>
                     <p><strong>State:</strong> ${post.states}</p>
                     ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" class="small-image"></p>` : ''}
-                    <hr>
                 `;
                 activitiesList.appendChild(postElement);
             });
