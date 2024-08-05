@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Activities</title>
 </head>
 <body>
@@ -14,31 +13,32 @@
         </ul>
     </nav>
 
-    <h1>All Activities</h1>
-
     <center>
+        <h1>All Activities</h1>
         <div id="activitiesList"></div>
     </center>
 
     <script>
-        // Get the posts from localStorage
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        document.addEventListener('DOMContentLoaded', function() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const activitiesList = document.getElementById('activitiesList');
 
-        // Display the posts
-        const activitiesList = document.getElementById('activitiesList');
-        posts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.innerHTML = `
-                <p><strong>Name of Activity:</strong> ${post.nActivity}</p>
-                <p><strong>Date:</strong> ${post.date}</p>
-                <p><strong>Recurring:</strong> ${post.recurring}</p>
-                <p><strong>Location:</strong> ${post.location}</p>
-                <p><strong>Process to Participate:</strong> ${post.process}</p>
-                <p><strong>State:</strong> ${post.state}</p>
-                ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
-                <hr>
-            `;
-            activitiesList.appendChild(postElement);
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.innerHTML = `
+                    <p><strong>Your Name:</strong> ${post.userName}</p>
+                    <p><strong>Your Email:</strong> ${post.userEmail}</p>
+                    <p><strong>Name of Activity:</strong> ${post.nActivity}</p>
+                    <p><strong>Date:</strong> ${post['1date']}</p>
+                    <p><strong>Recurring:</strong> ${post.Ireccuring}</p>
+                    <p><strong>Location:</strong> ${post.wLocation}</p>
+                    <p><strong>Process to Participate:</strong> ${post.wProcess}</p>
+                    <p><strong>State:</strong> ${post.states}</p>
+                    ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+                    <hr>
+                `;
+                activitiesList.appendChild(postElement);
+            });
         });
     </script>
 </body>
