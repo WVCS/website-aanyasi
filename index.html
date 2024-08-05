@@ -1,43 +1,68 @@
-<html>
-  <head> <link rel = "stylesheet" href= "style.css"> </head>
-  <title>
-    Special Needs education awareness 
-  </title>
-
-
-<nav> 
-    <li> <a href= "index.html"> Home </li>
-      <li> <a href= "createActivity.html"> Create Activity </li>
-  
-    <li><a href= ""> View Activities </a></li>
-  </nav>
-  
-  
-  
-  <center>
-  <h1>
-    Autism Awareness </h1>
-    
-   <sub>  this website is aimed to help special needs kids and families! Here, you can see or create any activities in your area for people with special needs!  </sub>
-    
-    <br> <br>
-  </center>
-  <br> </br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Needs Education Awareness</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <center>
-  <button1 type= "button" > View Activities in my Area </button1>
-    <p> </p>
-    <br> </br>
-    <button type = "button" onclick= "document.location= 'createActivity.html'"> Create an Activity </button> </center>
- <c> 
-   <br> </br>
-</center>
-  <img src= "https://hips.hearstapps.com/hmg-prod/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createActivity.html">Create Activity</a></li>
+            <li><a href="#">View Activities</a></li>
+        </ul>
+    </nav>
 
-  <center>
-    <h2> Other Links </h2> 
-    
-  <a href = "https://www.google.com/search?sca_esv=a2302d5a134243eb&sca_upv=1&rlz=1C9BKJA_enUS1113US1114&hl=en-US&sxsrf=ADLYWIJviQWpwLQDCqo_5enHhmbyOvKq9Q:1718996533398&q=colors+kids+book&udm=2&fbs=AEQNm0DvD4UMlvdpwktgGj2ZHhIXi58ra1MCmgeKkVE8y_uPCA_VArK8eDJ3eXUe-YWeaCChH2YkF0vz5NWgjmXujikWLEFS5d3wwO0mNJ5WAvP7FOuYx5Bqc97RyvnkUSFCuqEUSZ-dOdnmIfNaaT5UsbJgesxPu4sR5Mfm2KCiVlnc41VFEFFm19BGGkVxBlgwP6f9te4miLYI1WJHeREnqDmTbw8QdQ&sa=X&ved=2ahUKEwi38_iNse2GAxXfJEQIHTrJAxgQtKgLegQIHhAB&biw=1376&bih=913&dpr=2#vhid=hah1AVzybInB0M&vssid=mosaic"> Kids book </a>
-  </center>
-  </body>
+    <center>
+        <h1>Autism Awareness</h1>
+        <sub>this website is aimed to help special needs kids and families! Here, you can see or create any activities in your area for people with special needs!</sub>
+        <br><br>
+
+        <button type="button" id="viewActivitiesButton">View Activities in my Area</button>
+        <p></p>
+        <br>
+        <button type="button" onclick="document.location='createActivity.html'">Create an Activity</button>
+        <br><br>
+
+        <div id="activitiesList" style="display: none; margin-top: 20px;"></div>
+
+        <img src="https://hips.hearstapps.com/hmg-prod/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg" alt="Tulips">
+
+        <h2>Other Links</h2>
+        <a href="https://www.google.com/search?sca_esv=a2302d5a134243eb&sca_upv=1&rlz=1C9BKJA_enUS1113US1114&hl=en-US&sxsrf=ADLYWIJviQWpwLQDCqo_5enHhmbyOvKq9Q:1718996533398&q=colors+kids+book&udm=2&fbs=AEQNm0DvD4UMlvdpwktgGj2ZHhIXi58ra1MCmgeKkVE8y_uPCA_VArK8eDJ3eXUe-YWeaCChH2YkF0vz5NWgjmXujikWLEFS5d3wwO0mNJ5WAvP7FOuYx5Bqc97RyvnkUSFCuqEUSZ-dOdnmIfNaaT5UsbJgesxPu4sR5Mfm2KCiVlnc41VFEFFm19BGGkVxBlgwP6f9te4miLYI1WJHeREnqDmTbw8QdQ&sa=X&ved=2ahUKEwi38_iNse2GAxXfJEQIHTrJAxgQtKgLegQIHhAB&biw=1376&bih=913&dpr=2#vhid=hah1AVzybInB0M&vssid=mosaic">Kids book</a>
+    </center>
+
+    <script>
+        document.getElementById('viewActivitiesButton').addEventListener('click', function() {
+            // Get the posts from localStorage
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+            // Get the activitiesList div
+            const activitiesList = document.getElementById('activitiesList');
+
+            // Clear any existing posts
+            activitiesList.innerHTML = '';
+
+            // Display the posts
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.innerHTML = `
+                    <p><strong>Name of Activity:</strong> ${post.nActivity}</p>
+                    <p><strong>Date:</strong> ${post.date}</p>
+                    <p><strong>Recurring:</strong> ${post.recurring}</p>
+                    <p><strong>Location:</strong> ${post.location}</p>
+                    <p><strong>Process to Participate:</strong> ${post.process}</p>
+                    <p><strong>State:</strong> ${post.state}</p>
+                    ${post.imageDataURL ? `<p><strong>Image:</strong><br><img src="${post.imageDataURL}" alt="Activity Image" style="max-width: 100%; height: auto;"></p>` : ''}
+                    <hr>
+                `;
+                activitiesList.appendChild(postElement);
+            });
+
+            // Show the activitiesList div
+            activitiesList.style.display = 'block';
+        });
+    </script>
+</body>
 </html>
