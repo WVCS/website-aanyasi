@@ -22,19 +22,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const suggestions = JSON.parse(localStorage.getItem('suggestions')) || [];
-            const suggestionsList = document.getElementById('suggestionsList');
+            fetch('https://your-app-name.herokuapp.com/suggestions')
+                .then(response => response.json())
+                .then(data => {
+                    const suggestionsList = document.getElementById('suggestionsList');
 
-            suggestions.forEach(suggestion => {
-                const suggestionElement = document.createElement('div');
-                suggestionElement.className = 'suggestion';
-                suggestionElement.innerHTML = `
-                    <p><strong>Your Name:</strong> ${suggestion.userName}</p>
-                    <p><strong>Your Email:</strong> ${suggestion.userEmail}</p>
-                    <p><strong>Suggestion/Comment:</strong> ${suggestion.comment}</p>
-                `;
-                suggestionsList.appendChild(suggestionElement);
-            });
+                    data.forEach(suggestion => {
+                        const suggestionElement = document.createElement('div');
+                        suggestionElement.className = 'suggestion';
+                        suggestionElement.innerHTML = `
+                            <p><strong>Name:</strong> ${suggestion.userName}</p>
+                            <p><strong>Email:</strong> ${suggestion.userEmail}</p>
+                            <p><strong>Suggestion/Comment:</strong> ${suggestion.comment}</p>
+                            <hr>
+                        `;
+                        suggestionsList.appendChild(suggestionElement);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
