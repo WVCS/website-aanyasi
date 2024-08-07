@@ -7,13 +7,11 @@
 <body>
     <nav>
         <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="createActivity.html">Create Activity</a></li>
-        <li><a href="viewActivities.html">View Activities</a></li>
-        <li><a href="suggestions.html">Suggestions/Comments</a></li>
-        <li><a href="viewSuggestions.html">View Suggestions/Comments</a></li>
-    
-        
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createActivity.html">Create Activity</a></li>
+            <li><a href="viewActivities.html">View Activities</a></li>
+            <li><a href="suggestions.html">Suggestions/Comments</a></li>
+            <li><a href="viewSuggestions.html">View Suggestions/Comments</a></li>
         </ul>
     </nav>
 
@@ -31,7 +29,7 @@
 
             <input type="submit" value="Submit">
         </form>
-        
+
         <button onclick="window.location.href='index.html'">Back</button>
     </center>
 
@@ -45,12 +43,19 @@
                 suggestion[key] = value;
             });
 
-            const suggestions = JSON.parse(localStorage.getItem('suggestions')) || [];
-            suggestions.push(suggestion);
-            localStorage.setItem('suggestions', JSON.stringify(suggestions));
-
-            alert('Thank you for your suggestion/comment!');
-            event.target.reset();
+            fetch('https://your-app-name.herokuapp.com/suggestions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(suggestion)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Thank you for your suggestion/comment!');
+                event.target.reset();
+            })
+            .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
