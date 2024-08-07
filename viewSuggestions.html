@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Suggestions/Comments</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createActivity.html">Create Activity</a></li>
+            <li><a href="viewActivities.html">View Activities</a></li>
+            <li><a href="suggestions.html">Suggestions/Comments</a></li>
+            <li><a href="viewSuggestions.html">View Suggestions/Comments</a></li>
+        </ul>
+    </nav>
+
+    <center>
+        <h1>All Suggestions/Comments</h1>
+        <div id="suggestionsList"></div>
+    </center>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const suggestions = JSON.parse(localStorage.getItem('suggestions')) || [];
+            const suggestionsList = document.getElementById('suggestionsList');
+
+            suggestions.forEach(suggestion => {
+                const suggestionElement = document.createElement('div');
+                suggestionElement.className = 'suggestion';
+                suggestionElement.innerHTML = `
+                    <p><strong>Your Name:</strong> ${suggestion.userName}</p>
+                    <p><strong>Your Email:</strong> ${suggestion.userEmail}</p>
+                    <p><strong>Suggestion/Comment:</strong> ${suggestion.comment}</p>
+                `;
+                suggestionsList.appendChild(suggestionElement);
+            });
+        });
+    </script>
+</body>
+</html>
